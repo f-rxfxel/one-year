@@ -78,6 +78,13 @@ export default function Component() {
     return () => window.removeEventListener('wheel', handleWheel);
   }, [season, isScrolling]);
 
+  const seasonIcon = {
+    winter: '/icons/winter.svg',
+    summer: '/icons/summer.svg',
+    autumn: '/icons/autumn.svg',
+    spring: '/icons/spring.svg',
+  };
+
   return (
     <div className={`md:flex-row md:py-12 md:px-0 px-6 flex flex-col items-center justify-between h-screen bg-${season}-background`}>
       <section 
@@ -89,7 +96,7 @@ export default function Component() {
       <main className={`md:m-12 m-6 size-full border border-${season}-highlight flex flex-col items-center justify-center`}>
         <div className="flex items-center gap-3">
           <span className={`text-sm border-${season}-highlight`}>09</span>
-          <span className={`text-lg border-${season}-highlight`}>x</span>
+          <Image src={seasonIcon[season]} alt={season} width={70} height={70} />
           <span className={`text-sm border-${season}-highlight`}>06</span>
         </div>
         <h1 className="text-2xl font-bold">{seasonTexts[season].title}</h1>
