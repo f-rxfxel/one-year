@@ -51,6 +51,7 @@ const seasonKeys = Object.keys(seasons) as (keyof typeof seasons)[];
 export default function Component() {
   const [seasonKey, setSeasonKey] = useState<keyof typeof seasons>('winter');
   const [isScrolling, setIsScrolling] = useState(false);
+  const [imageVisible, setImageVisible] = useState(true);
 
   const season = seasons[seasonKey];
 
@@ -70,15 +71,20 @@ export default function Component() {
     const handleWheel = (event: WheelEvent) => {
       if (isScrolling) return;
       setIsScrolling(true);
-
-      event.deltaY > 0 ? handleNextSeason() : handlePreviousSeason();
-
+      setImageVisible(false); // inicia fade-out
+  
+      setTimeout(() => {
+        event.deltaY > 0 ? handleNextSeason() : handlePreviousSeason();
+        setImageVisible(true); // inicia fade-in
+      }, 250); // tempo do fade-out
+  
       setTimeout(() => setIsScrolling(false), 500);
     };
-
+  
     window.addEventListener('wheel', handleWheel);
     return () => window.removeEventListener('wheel', handleWheel);
   }, [seasonKey, isScrolling]);
+  
 
   return (
     <div
@@ -88,13 +94,16 @@ export default function Component() {
         onClick={handlePreviousSeason}
         className={`md:w-40 md:h-full h-28 w-full md:border-t md:border-l-0 border-${season.color}-highlight border-b border-r border-l cursor-pointer flex items-center justify-center hover:opacity-80 transition-opacity relative overflow-hidden`}
       >
-        <Image
-          key={`${season.key}-1`}
-          src={season.images[0]}
-          alt={season.title}
-          fill
-          style={{ objectFit: 'cover', mixBlendMode: 'luminosity' }}
-        />
+<Image
+  key={`${season.key}-1`}
+  src={season.images[0]}
+  alt={season.title}
+  fill
+  className={`transition-opacity duration-500 ${
+    imageVisible ? 'opacity-100' : 'opacity-0'
+  }`}
+  style={{ objectFit: 'cover', mixBlendMode: 'luminosity' }}
+/>
       </section>
       <main
         className={`md:m-12 m-6 size-full border border-${season.color}-highlight flex flex-col items-center justify-center`}
@@ -116,13 +125,16 @@ export default function Component() {
         onClick={handleNextSeason}
         className={`md:w-40 md:h-full h-28 w-full md:border-b md:border-r-0 border-${season.color}-highlight border-t border-l border-r cursor-pointer flex items-center justify-center hover:opacity-80 transition-opacity relative overflow-hidden`}
       >
-        <Image
-          key={`${season.key}-2`}
-          src={season.images[1]}
-          alt={season.title}
-          fill
-          style={{ objectFit: 'cover', mixBlendMode: 'luminosity' }}
-        />
+<Image
+  key={`${season.key}-2`}
+  src={season.images[1]}
+  alt={season.title}
+  fill
+  className={`transition-opacity duration-500 ${
+    imageVisible ? 'opacity-100' : 'opacity-0'
+  }`}
+  style={{ objectFit: 'cover', mixBlendMode: 'luminosity' }}
+/>
       </section>
     </div>
   );
