@@ -133,52 +133,69 @@
 @layer utilities {
   .bg-winter-background { 
     background-color: var(--color-winter-background);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 1s ease-in-out;
   }
   .bg-summer-background { 
     background-color: var(--color-summer-background);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 1s ease-in-out;
   }
   .bg-autumn-background { 
     background-color: var(--color-autumn-background);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 1s ease-in-out;
   }
   .bg-spring-background { 
     background-color: var(--color-spring-background);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 1s ease-in-out;
   }
   
   .border-winter-highlight { 
     border-color: var(--color-winter-highlight);
-    transition: border-color 0.5s ease-in-out;
+    transition: border-color 1s ease-in-out;
   }
   .border-summer-highlight { 
     border-color: var(--color-summer-highlight);
-    transition: border-color 0.5s ease-in-out;
+    transition: border-color 1s ease-in-out;
   }
   .border-autumn-highlight { 
     border-color: var(--color-autumn-highlight);
-    transition: border-color 0.5s ease-in-out;
+    transition: border-color 1s ease-in-out;
   }
   .border-spring-highlight { 
     border-color: var(--color-spring-highlight);
-    transition: border-color 0.5s ease-in-out;
+    transition: border-color 1s ease-in-out;
   }
   
   .bg-winter-highlight { 
     background-color: var(--color-winter-highlight);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 1s ease-in-out;
   }
   .bg-summer-highlight { 
     background-color: var(--color-summer-highlight);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 1s ease-in-out;
   }
   .bg-autumn-highlight { 
     background-color: var(--color-autumn-highlight);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 1s ease-in-out;
   }
   .bg-spring-highlight { 
     background-color: var(--color-spring-highlight);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 1s ease-in-out;
+  }
+  
+  .text-winter-highlight { 
+    color: var(--color-winter-highlight);
+    transition: color 1s ease-in-out;
+  }
+  .text-summer-highlight { 
+    color: var(--color-summer-highlight);
+    transition: color 1s ease-in-out;
+  }
+  .text-autumn-highlight { 
+    color: var(--color-autumn-highlight);
+    transition: color 1s ease-in-out;
+  }
+  .text-spring-highlight { 
+    color: var(--color-spring-highlight);
+    transition: color 1s ease-in-out;
   }
 }
