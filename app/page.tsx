@@ -11,7 +11,7 @@ const seasons = {
     description:
       'O inverno é a estação mais fria do ano, caracterizada por temperaturas baixas, dias mais curtos e noites mais longas. É um período de introspecção e aconchego, onde a natureza se prepara para um novo ciclo.',
     images: ['/images/winter 1.png', '/images/winter 2.png'],
-    icon: '/icons/winter.svg',
+    icon: '/icons/winter.png',
     color: 'winter',
   },
   summer: {
@@ -21,7 +21,7 @@ const seasons = {
     description:
       'O verão é a estação mais quente do ano, com dias longos e ensolarados. É um período de energia, vitalidade e atividades ao ar livre, onde a natureza está em seu auge de exuberância.',
     images: ['/images/summer 1.png', '/images/summer 2.png'],
-    icon: '/icons/summer.svg',
+    icon: '/icons/summer.png',
     color: 'summer',
   },
   autumn: {
@@ -31,7 +31,7 @@ const seasons = {
     description:
       'O outono é a estação da transição, onde as folhas mudam de cor e caem, preparando a natureza para o inverno. É um período de transformação e reflexão, com temperaturas amenas e paisagens douradas.',
     images: ['/images/autumn 1.png', '/images/autumn 2.png'],
-    icon: '/icons/autumn.svg',
+    icon: '/icons/autumn.png',
     color: 'autumn',
   },
   spring: {
@@ -41,7 +41,7 @@ const seasons = {
     description:
       'A primavera é a estação do renascimento, onde a natureza desperta do inverno. É um período de renovação, com flores desabrochando, temperaturas amenas e dias mais longos, anunciando a chegada do verão.',
     images: ['/images/spring 1.png', '/images/spring 2.png'],
-    icon: '/icons/spring.svg',
+    icon: '/icons/spring.png',
     color: 'spring',
   },
 } as const;
