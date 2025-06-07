@@ -3,11 +3,17 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
+import localFont from 'next/font/local'
+ 
+const TheSeasons = localFont({
+  src: '../public/fonts/TheSeasons.otf',
+})
+
 const seasons = {
   winter: {
     key: 'winter',
-    title: 'Inverno',
-    subtitle: 'A estação do frio',
+    title: 'DOIS',
+    subtitle: 'INVERNOS',
     description:
       'O inverno é a estação mais fria do ano, caracterizada por temperaturas baixas, dias mais curtos e noites mais longas. É um período de introspecção e aconchego, onde a natureza se prepara para um novo ciclo.',
     images: ['/images/winter 1.png', '/images/winter 2.png'],
@@ -16,8 +22,8 @@ const seasons = {
   },
   summer: {
     key: 'summer',
-    title: 'Verão',
-    subtitle: 'A estação do calor',
+    title: 'DOIS',
+    subtitle: 'VEROES',
     description:
       'O verão é a estação mais quente do ano, com dias longos e ensolarados. É um período de energia, vitalidade e atividades ao ar livre, onde a natureza está em seu auge de exuberância.',
     images: ['/images/summer 1.png', '/images/summer 2.png'],
@@ -26,8 +32,8 @@ const seasons = {
   },
   autumn: {
     key: 'autumn',
-    title: 'Outono',
-    subtitle: 'A estação das folhas',
+    title: 'DOIS',
+    subtitle: 'OUTONOS',
     description:
       'O outono é a estação da transição, onde as folhas mudam de cor e caem, preparando a natureza para o inverno. É um período de transformação e reflexão, com temperaturas amenas e paisagens douradas.',
     images: ['/images/autumn 1.png', '/images/autumn 2.png'],
@@ -36,8 +42,8 @@ const seasons = {
   },
   spring: {
     key: 'spring',
-    title: 'Primavera',
-    subtitle: 'A estação das flores',
+    title: 'DUAS',
+    subtitle: 'PRIMAVERAS',
     description:
       'A primavera é a estação do renascimento, onde a natureza desperta do inverno. É um período de renovação, com flores desabrochando, temperaturas amenas e dias mais longos, anunciando a chegada do verão.',
     images: ['/images/spring 1.png', '/images/spring 2.png'],
@@ -119,13 +125,13 @@ export default function Component() {
       <main
         className={`md:m-12 m-6 size-full border border-${season.color}-highlight flex flex-col items-center justify-center`}
       >
-        <div className="flex items-center gap-3">
-          <span className={`text-md text-${season.color}-highlight`}>09</span>
+        <div className="flex items-center md:gap-12 gap-6">
+          <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>09</span>
           <Image src={season.icon} alt={season.title} width={70} height={70} />
-          <span className={`text-md text-${season.color}-highlight`}>06</span>
+          <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>06</span>
         </div>
-        <h1 className={`text-2xl font-bold text-${season.color}-highlight`}>{season.title}</h1>
-        <h2 className={`text-xl mb-4 text-${season.color}-highlight`}>{season.subtitle}</h2>
+        <h1 className={`text-9xl text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</h1>
+        <h1 className={`text-9xl mb-4 text-${season.color}-highlight ${TheSeasons.className}`}>{season.subtitle}</h1>
         <p className={`md:max-w-2/3 px-8 text-md text-justify border-${season.color}-highlight text-${season.color}-highlight`}>{season.description}</p>
       </main>
 
