@@ -130,8 +130,8 @@ export default function Component() {
           <Image src={season.icon} alt={season.title} width={70} height={70} />
           <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>06</span>
         </div>
-        <h1 className={`text-9xl text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</h1>
-        <h1 className={`text-9xl mb-4 text-${season.color}-highlight ${TheSeasons.className}`}>{season.subtitle}</h1>
+        <h1 className={`lg:text-9xl sm:text-7xl text-5xl text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</h1>
+        <h1 className={`lg:text-9xl sm:text-7xl text-5xl mb-4 text-${season.color}-highlight ${TheSeasons.className}`}>{season.subtitle}</h1>
         <p className={`md:max-w-2/3 px-8 text-md text-justify border-${season.color}-highlight text-${season.color}-highlight`}>{season.description}</p>
       </main>
 
