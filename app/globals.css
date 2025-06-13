@@ -199,3 +199,23 @@
     transition: color 1s ease-in-out;
   }
 }
+
+.mask {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+}
+
+@keyframes strokeOffset {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+#mask-T1 {
+  animation: strokeOffset 1s linear forwards 0.5s;
+}
+
+#mask-T2 {
+  animation: strokeOffset 1.5s linear forwards 1s;
+}

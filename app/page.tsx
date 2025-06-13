@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 import localFont from 'next/font/local'
+import T from '@/components/T';
  
 const TheSeasons = localFont({
   src: '../public/fonts/TheSeasons.otf',
@@ -33,7 +34,7 @@ const seasons = {
   autumn: {
     key: 'autumn',
     title: 'DOIS',
-    subtitle: 'OUTONOS',
+    subtitle: <span className="whitespace-nowrap">OU<T/><span className="-ml-1 md:-ml-4">ONOS</span></span>,
     description:
       'O outono é a estação da transição, onde as folhas mudam de cor e caem, preparando a natureza para o inverno. É um período de transformação e reflexão, com temperaturas amenas e paisagens douradas.',
     images: ['/images/autumn 1.png', '/images/autumn 2.png'],
@@ -134,6 +135,7 @@ export default function Component() {
         <h1 className={`lg:text-9xl sm:text-7xl text-5xl mb-4 text-${season.color}-highlight ${TheSeasons.className}`}>{season.subtitle}</h1>
         <p className={`md:max-w-2/3 px-8 text-md text-justify border-${season.color}-highlight text-${season.color}-highlight`}>{season.description}</p>
       </main>
+    
 
       <section
         onClick={handleNextSeason}
