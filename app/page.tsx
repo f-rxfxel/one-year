@@ -63,9 +63,21 @@ export default function Component() {
   const [seasonKey, setSeasonKey] = useState<keyof typeof seasons>('winter');
   const [prevSeasonKey, setPrevSeasonKey] = useState<keyof typeof seasons | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const season = seasons[seasonKey];
   const prevSeason = prevSeasonKey ? seasons[prevSeasonKey] : null;
+
+  const handleMouseMove = (event: React.MouseEvent) => {
+    const { clientX, clientY } = event;
+    const { innerWidth, innerHeight } = window;
+    
+    // Calcula a posição relativa do mouse (valores entre -1 e 1)
+    const x = (clientX / innerWidth) * 2 - 1;
+    const y = (clientY / innerHeight) * 2 - 1;
+    
+    setMousePosition({ x, y });
+  };
 
   const transitionToSeason = (newKey: keyof typeof seasons) => {
     if (seasonKey === newKey) return;
@@ -111,13 +123,19 @@ export default function Component() {
       className={`absolute top-0 left-0 transition-opacity duration-500 ${
         visible ? 'opacity-100 z-10' : 'opacity-0 z-0'
       }`}
-      style={{ objectFit: 'cover', mixBlendMode: 'luminosity' }}
+      style={{ 
+        objectFit: 'cover', 
+        mixBlendMode: 'luminosity',
+        transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`,
+        transition: 'transform 0.1s ease-out'
+      }}
     />
   );
 
   return (
     <div
       className={`md:flex-row md:py-12 md:px-0 px-6 flex flex-col items-center justify-between h-screen bg-${season.color}-background`}
+      onMouseMove={handleMouseMove}
     >
       <section
         onClick={handlePreviousSeason}
