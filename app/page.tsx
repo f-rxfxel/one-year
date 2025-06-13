@@ -4,8 +4,12 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 import localFont from 'next/font/local'
-import T from '@/components/T';
- 
+import T from '@/components/teamo/T';
+import Winter from '@/components/icons/winter';
+import Summer from '@/components/icons/summer';
+import Autumn from '@/components/icons/autumn';
+import Spring from '@/components/icons/spring';
+
 const TheSeasons = localFont({
   src: '../public/fonts/TheSeasons.otf',
 })
@@ -18,7 +22,7 @@ const seasons = {
     description:
       'O inverno é a estação mais fria do ano, caracterizada por temperaturas baixas, dias mais curtos e noites mais longas. É um período de introspecção e aconchego, onde a natureza se prepara para um novo ciclo.',
     images: ['/images/winter 1.png', '/images/winter 2.png'],
-    icon: '/icons/winter.png',
+    icon: (color: string) => <Winter fill={color} />,
     color: 'winter',
   },
   summer: {
@@ -28,7 +32,7 @@ const seasons = {
     description:
       'O verão é a estação mais quente do ano, com dias longos e ensolarados. É um período de energia, vitalidade e atividades ao ar livre, onde a natureza está em seu auge de exuberância.',
     images: ['/images/summer 1.png', '/images/summer 2.png'],
-    icon: '/icons/summer.png',
+    icon: (color: string) => <Summer fill={color} />,
     color: 'summer',
   },
   autumn: {
@@ -38,7 +42,7 @@ const seasons = {
     description:
       'O outono é a estação da transição, onde as folhas mudam de cor e caem, preparando a natureza para o inverno. É um período de transformação e reflexão, com temperaturas amenas e paisagens douradas.',
     images: ['/images/autumn 1.png', '/images/autumn 2.png'],
-    icon: '/icons/autumn.png',
+    icon: (color: string) => <Autumn fill={color} />,
     color: 'autumn',
   },
   spring: {
@@ -48,7 +52,7 @@ const seasons = {
     description:
       'A primavera é a estação do renascimento, onde a natureza desperta do inverno. É um período de renovação, com flores desabrochando, temperaturas amenas e dias mais longos, anunciando a chegada do verão.',
     images: ['/images/spring 1.png', '/images/spring 2.png'],
-    icon: '/icons/spring.png',
+    icon: (color: string) => <Spring fill={color} />,
     color: 'spring',
   },
 } as const;
@@ -128,7 +132,10 @@ export default function Component() {
       >
         <div className="flex items-center md:gap-12 gap-6">
           <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>09</span>
-          <Image src={season.icon} alt={season.title} width={70} height={70} />
+          {/* <Image src={season.icon} alt={season.title} width={70} height={70} /> */}
+          <div className={`transition-colors duration-500 text-${season.color}-highlight`}>
+            {season.icon(`currentColor`)}
+          </div>
           <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>06</span>
         </div>
         <h1 className={`lg:text-9xl sm:text-7xl text-5xl text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</h1>
