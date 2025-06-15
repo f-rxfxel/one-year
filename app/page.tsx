@@ -65,19 +65,19 @@ export default function Component() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      const x = (event.clientX / window.innerWidth - 0.5) * 20;
+      const y = (event.clientY / window.innerHeight - 0.5) * 20;
+      setMousePosition({ x, y });
+    };
+  
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const season = seasons[seasonKey];
   const prevSeason = prevSeasonKey ? seasons[prevSeasonKey] : null;
-
-  const handleMouseMove = (event: React.MouseEvent) => {
-    const { clientX, clientY } = event;
-    const { innerWidth, innerHeight } = window;
-    
-    // Calcula a posição relativa do mouse (valores entre -1 e 1)
-    const x = (clientX / innerWidth) * 2 - 1;
-    const y = (clientY / innerHeight) * 2 - 1;
-    
-    setMousePosition({ x, y });
-  };
 
   const transitionToSeason = (newKey: keyof typeof seasons) => {
     if (seasonKey === newKey) return;
@@ -105,41 +105,41 @@ export default function Component() {
       event.deltaY > 0 ? handleNextSeason() : handlePreviousSeason();
 
       setTimeout(() => {
-        setPrevSeasonKey(null); // limpa imagem anterior após a transição
+        setPrevSeasonKey(null);
         setIsScrolling(false);
-      }, 600); // deve bater com duração do fade
+      }, 600);
     };
 
     window.addEventListener('wheel', handleWheel);
     return () => window.removeEventListener('wheel', handleWheel);
   }, [seasonKey, isScrolling]);
 
-  const renderImage = (imgSrc: string, key: string, visible: boolean) => (
-    <Image
-      key={key}
-      src={imgSrc}
-      alt=""
-      fill
-      className={`absolute top-0 left-0 transition-opacity duration-500 ${
-        visible ? 'opacity-100 z-10' : 'opacity-0 z-0'
-      }`}
-      style={{ 
-        objectFit: 'cover', 
-        mixBlendMode: 'luminosity',
-        transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`,
-        transition: 'transform 0.1s ease-out'
-      }}
-    />
-  );
+ const renderImage = (imgSrc: string, key: string, visible: boolean) => (
+  <Image
+    key={key}
+    src={imgSrc}
+    alt=""
+    fill
+    className={`absolute top-0 left-0 transition-opacity duration-500 ${
+      visible ? 'opacity-100 z-10' : 'opacity-0 z-0'
+    }`}
+    style={{
+      objectFit: 'cover',
+      mixBlendMode: 'luminosity',
+      transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(1.2)`,
+      transition: 'transform 0.1s linear',
+    }}
+  />
+);
+
 
   return (
     <div
       className={`md:flex-row md:py-12 md:px-0 px-6 flex flex-col items-center justify-between h-screen bg-${season.color}-background`}
-      onMouseMove={handleMouseMove}
     >
       <section
         onClick={handlePreviousSeason}
-        className={`relative md:w-40 md:h-full h-28 w-full md:border-t md:border-l-0 border-${season.color}-highlight border-b border-r border-l cursor-pointer flex items-center justify-center hover:opacity-80 transition-opacity overflow-hidden`}
+        className={`relative md:w-60 md:h-full h-28 w-full md:border-t md:border-l-0 border-${season.color}-highlight border-b border-r border-l flex items-center justify-center overflow-hidden`}
       >
         {prevSeason && renderImage(prevSeason.images[0], `${prevSeason.key}-1`, false)}
         {renderImage(season.images[0], `${season.key}-1`, true)}
@@ -150,7 +150,6 @@ export default function Component() {
       >
         <div className="flex items-center md:gap-12 gap-6">
           <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>09</span>
-          {/* <Image src={season.icon} alt={season.title} width={70} height={70} /> */}
           <div className={`transition-colors duration-500 text-${season.color}-highlight`}>
             {season.icon(`currentColor`)}
           </div>
@@ -164,7 +163,7 @@ export default function Component() {
 
       <section
         onClick={handleNextSeason}
-        className={`relative md:w-40 md:h-full h-28 w-full md:border-b md:border-r-0 border-${season.color}-highlight border-t border-l border-r cursor-pointer flex items-center justify-center hover:opacity-80 transition-opacity overflow-hidden`}
+        className={`relative md:w-60 md:h-full h-28 w-full md:border-b md:border-r-0 border-${season.color}-highlight border-t border-l border-r flex items-center justify-center overflow-hidden`}
       >
         {prevSeason && renderImage(prevSeason.images[1], `${prevSeason.key}-2`, false)}
         {renderImage(season.images[1], `${season.key}-2`, true)}
