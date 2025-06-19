@@ -120,14 +120,14 @@
 }
 
 @theme {
-  --color-winter-highlight: #1B3E6E;
-  --color-winter-background: #DFDFDF;
-  --color-autumn-highlight: #BB6830;
-  --color-autumn-background: #F8D794;
-  --color-spring-highlight: #FFF3F3;
-  --color-spring-background: #E6B5B8;
-  --color-summer-highlight: #4E3F0E;
-  --color-summer-background: #FED13F;
+  --color-winter-highlight: #1B4E8D;
+  --color-winter-background: #BDE8FF;
+  --color-autumn-highlight: #790E0E;
+  --color-autumn-background: #FF9A9A;
+  --color-spring-highlight: #653653;
+  --color-spring-background: #EFDBEA;
+  --color-summer-highlight: #7C3E0B;
+  --color-summer-background: #FFE746;
 }
 
 @layer utilities {
@@ -219,3 +219,20 @@
 #mask-T2 {
   animation: strokeOffset 1.5s linear forwards 1s;
 }
+
+#mask-E1 {
+  animation: strokeOffset 1s linear forwards 0.5s;
+}
+
+#mask-E2 {
+  animation: strokeOffset 0.5s linear forwards 1.5s;
+}
+
+#mask-E3 {
+  animation: strokeOffset 0.5s linear forwards 2s;
+}
+
+#mask-E4 {
+  animation: strokeOffset 0.5s linear forwards 2.5s;
+}
+
