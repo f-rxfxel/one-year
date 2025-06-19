@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback  } from 'react';
 
 import localFont from 'next/font/local'
 import T from '@/components/teamo/T';
@@ -78,34 +78,34 @@ export default function Component() {
     setSeasonKey(newKey);
   };
 
-  const handlePreviousSeason = () => {
+  const handlePreviousSeason = useCallback(() => {
     const currentIndex = seasonKeys.indexOf(seasonKey);
     const previousIndex = (currentIndex - 1 + seasonKeys.length) % seasonKeys.length;
     transitionToSeason(seasonKeys[previousIndex]);
-  };
+  }, [seasonKey]);
 
-  const handleNextSeason = () => {
+  const handleNextSeason = useCallback(() => {
     const currentIndex = seasonKeys.indexOf(seasonKey);
     const nextIndex = (currentIndex + 1) % seasonKeys.length;
     transitionToSeason(seasonKeys[nextIndex]);
-  };
+  }, [seasonKey]);
 
   useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
       if (isScrolling) return;
       setIsScrolling(true);
-
+  
       event.deltaY > 0 ? handleNextSeason() : handlePreviousSeason();
-
+  
       setTimeout(() => {
         setPrevSeasonKey(null);
         setIsScrolling(false);
       }, 600);
     };
-
+  
     window.addEventListener('wheel', handleWheel);
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [seasonKey, isScrolling]);
+  }, [seasonKey, isScrolling, handleNextSeason, handlePreviousSeason]);
 
  const renderImage = (imgSrc: string, key: string, visible: boolean) => (
   <Image
@@ -134,7 +134,7 @@ export default function Component() {
         onClick={handlePreviousSeason}
         className={`relative md:w-60 md:h-full h-28 w-full md:border-t md:border-l-0 border-${season.color}-highlight border-b border-r border-l flex items-center justify-center overflow-hidden`}
       >
-        {prevSeason && renderImage(prevSeason.images[0], `${prevSeason.key}-1`, false)}
+        {prevSeason ? renderImage(prevSeason.images[0], `${prevSeason.key}-1`, false) : null}
         {renderImage(season.images[0], `${season.key}-1`, true)}
       </section>
 
@@ -158,7 +158,7 @@ export default function Component() {
         onClick={handleNextSeason}
         className={`relative md:w-60 md:h-full h-28 w-full md:border-b md:border-r-0 border-${season.color}-highlight border-t border-l border-r flex items-center justify-center overflow-hidden`}
       >
-        {prevSeason && renderImage(prevSeason.images[1], `${prevSeason.key}-2`, false)}
+        {prevSeason ? renderImage(prevSeason.images[1], `${prevSeason.key}-2`, false) : null}
         {renderImage(season.images[1], `${season.key}-2`, true)}
       </section>
     </div>
