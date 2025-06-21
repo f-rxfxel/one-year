@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className={`antialiased h-screen ${poppins.className}`}>
+    <html lang="pt-br" className={`antialiased h-screen overflow-hidden ${poppins.className}`}>
       <body>{children}</body>
     </html>
   );
