@@ -10,6 +10,8 @@ import Winter from '@/components/icons/winter';
 import Summer from '@/components/icons/summer';
 import Autumn from '@/components/icons/autumn';
 import Spring from '@/components/icons/spring';
+import A from '@/components/teamo/A';
+import M from '@/components/teamo/M';
 
 const TheSeasons = localFont({
   src: '../public/fonts/TheSeasons.otf',
@@ -19,7 +21,7 @@ const seasons = {
   autumn: {
     key: 'autumn',
     title: 'DOIS',
-    subtitle: <span className="whitespace-nowrap">OU<T/><span className="-ml-1 md:-ml-4">ONOS</span></span>,
+    subtitle: <span className="whitespace-nowrap">OU<T/><span className="-ml-3 md:-ml-4">ONOS</span></span>,
     images: ['/images/autumn 1.png', '/images/autumn 2.png'],
     icon: (color: string) => <Autumn fill={color} className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />,
     color: 'autumn',
@@ -27,15 +29,15 @@ const seasons = {
   winter: {
     key: 'winter',
     title: 'DOIS',
-    subtitle: <span className="whitespace-nowrap"><span className="-mr-0 md:-mr-0">INV</span><E/><span>RNOS</span></span>,
+    subtitle: <span className="whitespace-nowrap"><span className="-mr-1 md:-mr-3">INV</span><E/><span>RNOS</span></span>,
     images: ['/images/winter 1.png', '/images/winter 2.png'],
     icon: (color: string) => <Winter fill={color} className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />,
     color: 'winter',
   },
   spring: {
     key: 'spring',
-    title: 'DUAS',
-    subtitle: 'PRIMAVERAS',
+    title: <span className="whitespace-nowrap"><span className="-mr-2 md:-mr-5">DU</span><A/><span className='-ml-2 md:-ml-3'>S</span></span>,
+    subtitle: <span className="whitespace-nowrap"><span className='-mr-0.5 md:mr-2'>PRI</span><M/><span className='md:-ml-6 -ml-6'>AVERAS</span></span>,
     images: ['/images/spring 1.png', '/images/spring 2.png'],
     icon: (color: string) => <Spring fill={color} className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />,
     color: 'spring',
@@ -150,7 +152,7 @@ export default function Component() {
         </div>
         <h1 className={`lg:text-9xl sm:text-7xl text-5xl text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</h1>
         <h1 className={`lg:text-9xl sm:text-7xl text-5xl mb-4 text-${season.color}-highlight ${TheSeasons.className}`}>{season.subtitle}</h1>
-        <p className={`md:max-w-2/3 px-8 text-md text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, as folhas cairão mesmo enquanto ainda houver perfume de flor; o frio se instalará em meio ao calor, como o rio que se congela e depois se torna refrescante. A flor caída retorna à terra para dar força a outra flor. Portanto, eu morreria feliz, porque tudo é real e tudo está certo. O que for, quando for, é o que será o que é.</p>
+        <p className={`md:max-w-2/3 px-8 text-md text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, sem asas que resistam, as folhas cairão — mesmo que ainda haja perfume de flor. O frio se instalará em meio ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real e pulsa em amor.</p>
       </main>
     
 

@@ -217,7 +217,7 @@
 }
 
 #mask-T2 {
-  animation: strokeOffset 1.5s linear forwards 1s;
+  animation: strokeOffset 1s linear forwards 1s;
 }
 
 #mask-E1 {
@@ -234,5 +234,37 @@
 
 #mask-E4 {
   animation: strokeOffset 0.5s linear forwards 2.5s;
+}
+
+#mask-E5 {
+  animation: strokeOffset 0.5s linear forwards 3s;
+}
+
+#mask-A1 {
+  animation: strokeOffset 1s linear forwards 0.5s;
+}
+
+#mask-A2 {
+  animation: strokeOffset 0.1s linear forwards 1.5s;
+}
+
+#mask-A3 {
+  animation: strokeOffset 0.3s linear forwards 1.6s;
+}
+
+#mask-A4 {
+  animation: strokeOffset 0.2s linear forwards 1.9s;
+}
+
+#mask-M1 {
+  animation: strokeOffset 1s linear forwards 2.5s;
+}
+
+#mask-M2 {
+  animation: strokeOffset 1s linear forwards 3.5s;
+}
+
+#mask-M3 {
+  animation: strokeOffset 0.5s linear forwards 4.5s;
 }
 
