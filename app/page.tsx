@@ -60,6 +60,7 @@ export default function Component() {
   const [prevSeasonKey, setPrevSeasonKey] = useState<keyof typeof seasons | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -70,6 +71,13 @@ export default function Component() {
   
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const season = seasons[seasonKey];
@@ -122,7 +130,9 @@ export default function Component() {
     style={{
       objectFit: 'cover',
       mixBlendMode: 'luminosity',
-      transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(1.2)`,
+      transform: isMobile
+        ? 'scale(1.2)'
+        : `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(1.2)`,
       transition: 'transform 0.1s linear',
     }}
   />
@@ -153,9 +163,7 @@ export default function Component() {
         </div>
         <h1 className={`lg:text-9xl sm:text-7xl text-5xl text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</h1>
         <h1 className={`lg:text-9xl sm:text-7xl text-5xl mb-8 text-${season.color}-highlight ${TheSeasons.className}`}>
-          {typeof season.subtitle === 'function'
-            ? season.subtitle(`text-${season.color}-highlight`)
-            : season.subtitle}
+          {season.subtitle ? season.subtitle : ''}
         </h1>
         <p className={`md:max-w-2/3 px-8 text-sm md:text-base text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, sem asas que resistam, as folhas cairão — mesmo que ainda haja perfume de flor. O frio se instalará em meio ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real e pulsa em amor.</p>
       </main>
