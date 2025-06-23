@@ -82,6 +82,15 @@ export default function Component() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  useEffect(() => {
+    const setVh = () => {
+      document.documentElement.style.setProperty('--app-vh', `${window.innerHeight}px`);
+    };
+    setVh();
+    window.addEventListener('resize', setVh);
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
+
   const season = seasons[seasonKey];
   const prevSeason = prevSeasonKey ? seasons[prevSeasonKey] : null;
 
@@ -131,7 +140,7 @@ export default function Component() {
   const handleTouchEnd = () => {
     if (touchStartY !== null && touchEndY !== null) {
       const distance = touchStartY - touchEndY;
-      if (Math.abs(distance) > 50 && !isScrolling) { // 50px é um valor razoável para swipe
+      if (Math.abs(distance) > 50 && !isScrolling) {
         setIsScrolling(true);
         if (distance > 0) {
           handleNextSeason();
@@ -174,7 +183,7 @@ export default function Component() {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className={`md:flex-row md:py-12 md:px-0 px-6 flex flex-col items-center justify-between h-screen bg-${season.color}-background`}
+      className={`full-mobile-height md:flex-row md:py-12 md:px-0 px-6 flex flex-col items-center justify-between bg-${season.color}-background`}
     >
       <section
         onClick={handlePreviousSeason}
