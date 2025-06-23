@@ -288,6 +288,11 @@ html, body {
   height: 100%;
   min-height: 100%;
   width: 100%;
-  background: #000; /* Ou a cor de fundo padrão do seu app */
-  overscroll-behavior: none; /* Evita bounce/scroll extra em mobile */
+  background: #000; 
+  overscroll-behavior: none; 
+}
+
+.dynamic-title {
+  font-size: clamp(2rem, 8vw, 8rem);
+  line-height: 1.1;
 }

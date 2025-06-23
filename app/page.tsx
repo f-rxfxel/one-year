@@ -183,31 +183,35 @@ export default function Component() {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className={`full-mobile-height md:flex-row md:py-12 md:px-0 px-6 flex flex-col items-center justify-between bg-${season.color}-background`}
+      className={`flex flex-col md:flex-row items-center justify-between md:py-12 md:px-0 px-6 bg-${season.color}-background ${
+        isMobile ? 'full-mobile-height' : 'h-screen'
+      }`}
     >
       <section
         onClick={handlePreviousSeason}
-        className={`relative md:w-60 md:h-full h-28 w-full md:border-t md:border-l-0 border-${season.color}-highlight border-b border-r border-l flex items-center justify-center overflow-hidden`}
+        className={`relative md:w-60 md:h-full h-28 w-full md:border-t md:border-l-0 border-${season.color}-highlight border-b border-r border-l flex items-center justify-evenly overflow-hidden`}
       >
         {prevSeason ? renderImage(prevSeason.images[0], `${prevSeason.key}-1`, false) : null}
         {renderImage(season.images[0], `${season.key}-1`, true)}
       </section>
 
       <main
-        className={`md:m-12 m-6 size-full border border-${season.color}-highlight flex flex-col items-center justify-center`}
+        className={`md:m-12 m-6 size-full border border-${season.color}-highlight flex flex-col items-center justify-evenly md:justify-center`}
       >
-        <div className="flex items-center md:gap-18 gap-20 pb-20">
+        <div className="flex items-center md:gap-18 gap-20 pb-6 md:pb-20">
           <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>09</span>
           <div className={`transition-colors duration-500 text-${season.color}-highlight relative`}>
             {season.icon(`currentColor`)}
           </div>
           <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>06</span>
         </div>
-        <h1 className={`lg:text-9xl sm:text-7xl text-5xl text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</h1>
-        <h1 className={`lg:text-9xl sm:text-7xl text-5xl mb-8 text-${season.color}-highlight ${TheSeasons.className}`}>
-          {season.subtitle ? season.subtitle : ''}
+        <h1 className='flex flex-col justify-center items-center'>
+          <p className={`dynamic-title text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</p>
+          <p className={`dynamic-title  text-${season.color}-highlight ${TheSeasons.className}`}>
+            {season.subtitle ? season.subtitle : ''}
+          </p>
         </h1>
-        <p className={`md:max-w-2/3 px-8 text-sm md:text-base text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, sem asas que resistam, as folhas cairão — mesmo que ainda haja perfume de flor. O frio se instalará em meio ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real e pulsa em amor.</p>
+        <p className={`text-sm md:text-base p-2 lg:p-0 w-[95%] sm:w-4/5 md:w-2/3 lg:w-3/4 text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, não há asas que resistam e as folhas cairão — mesmo que ainda haja perfume de flor. O frio virá em complemento ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real, está certo e há amor.</p>
       </main>
 
       <section
