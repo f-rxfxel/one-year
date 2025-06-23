@@ -61,6 +61,8 @@ export default function Component() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const [touchEndY, setTouchEndY] = useState<number | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -118,6 +120,34 @@ export default function Component() {
     return () => window.removeEventListener('wheel', handleWheel);
   }, [seasonKey, isScrolling, handleNextSeason, handlePreviousSeason]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartY(e.touches[0].clientY);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndY(e.touches[0].clientY);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartY !== null && touchEndY !== null) {
+      const distance = touchStartY - touchEndY;
+      if (Math.abs(distance) > 50 && !isScrolling) { // 50px é um valor razoável para swipe
+        setIsScrolling(true);
+        if (distance > 0) {
+          handleNextSeason();
+        } else {
+          handlePreviousSeason();
+        }
+        setTimeout(() => {
+          setPrevSeasonKey(null);
+          setIsScrolling(false);
+        }, 600);
+      }
+    }
+    setTouchStartY(null);
+    setTouchEndY(null);
+  };
+
  const renderImage = (imgSrc: string, key: string, visible: boolean) => (
   <Image
     key={key}
@@ -141,6 +171,9 @@ export default function Component() {
 
   return (
     <div
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       className={`md:flex-row md:py-12 md:px-0 px-6 flex flex-col items-center justify-between h-screen bg-${season.color}-background`}
     >
       <section
