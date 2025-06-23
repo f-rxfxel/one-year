@@ -126,8 +126,8 @@
   --color-autumn-background: #FF9A9A;
   --color-spring-highlight: #653653;
   --color-spring-background: #EFDBEA;
-  --color-summer-highlight: #7C3E0B;
-  --color-summer-background: #FFE746;
+  --color-summer-highlight: #4E3F0E;
+  --color-summer-background: #FED13F;
 }
 
 @layer utilities {
@@ -268,3 +268,10 @@
   animation: strokeOffset 0.5s linear forwards 4.5s;
 }
 
+#mask-O1 {
+  animation: strokeOffset 1s linear forwards 1s;
+}
+
+#mask-O2 {
+  animation: strokeOffset 1s linear forwards 2s;
+}

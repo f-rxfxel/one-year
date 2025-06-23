@@ -12,6 +12,7 @@ import Autumn from '@/components/icons/autumn';
 import Spring from '@/components/icons/spring';
 import A from '@/components/teamo/A';
 import M from '@/components/teamo/M';
+import O from '@/components/teamo/O';
 
 const TheSeasons = localFont({
   src: '../public/fonts/TheSeasons.otf',
@@ -44,7 +45,7 @@ const seasons = {
   },
   summer: {
     key: 'summer',
-    title: 'DOIS',
+    title: <span className="whitespace-nowrap">D<span className='relative md:bottom-4 bottom-2'><O/></span><span className='-ml-0 md:-ml-0'>IS</span></span>,
     subtitle: 'VEROES',
     images: ['/images/summer 1.png', '/images/summer 2.png'],
     icon: (color: string) => <Summer fill={color} className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />,
@@ -143,7 +144,7 @@ export default function Component() {
       <main
         className={`md:m-12 m-6 size-full border border-${season.color}-highlight flex flex-col items-center justify-center`}
       >
-        <div className="flex items-center md:gap-18 gap-20 pb-12">
+        <div className="flex items-center md:gap-18 gap-20 pb-20">
           <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>09</span>
           <div className={`transition-colors duration-500 text-${season.color}-highlight relative`}>
             {season.icon(`currentColor`)}
@@ -151,10 +152,9 @@ export default function Component() {
           <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>06</span>
         </div>
         <h1 className={`lg:text-9xl sm:text-7xl text-5xl text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</h1>
-        <h1 className={`lg:text-9xl sm:text-7xl text-5xl mb-4 text-${season.color}-highlight ${TheSeasons.className}`}>{season.subtitle}</h1>
-        <p className={`md:max-w-2/3 px-8 text-md text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, sem asas que resistam, as folhas cairão — mesmo que ainda haja perfume de flor. O frio se instalará em meio ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real e pulsa em amor.</p>
+        <h1 className={`lg:text-9xl sm:text-7xl text-5xl mb-8 text-${season.color}-highlight ${TheSeasons.className}`}>{season.subtitle}</h1>
+        <p className={`md:max-w-2/3 px-8 text-sm md:text-base text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, sem asas que resistam, as folhas cairão — mesmo que ainda haja perfume de flor. O frio se instalará em meio ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real e pulsa em amor.</p>
       </main>
-    
 
       <section
         onClick={handleNextSeason}
