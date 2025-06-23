@@ -196,14 +196,14 @@ export default function Component() {
       </section>
 
       <main
-        className={`md:m-12 m-6 size-full border border-${season.color}-highlight flex flex-col items-center justify-evenly md:justify-center`}
+        className={`md:m-12 m-6 size-full border border-${season.color}-highlight flex flex-col items-center justify-center md:justify-center`}
       >
-        <div className="flex items-center md:gap-18 gap-20 pb-6 md:pb-20">
-          <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>09</span>
+        <div className="flex items-center md:gap-18 gap-16 pb-16 md:pb-20">
+          <span className={`md:text-xl text-md font-medium text-${season.color}-highlight`}>09</span>
           <div className={`transition-colors duration-500 text-${season.color}-highlight relative`}>
             {season.icon(`currentColor`)}
           </div>
-          <span className={`md:text-xl text-lg font-medium text-${season.color}-highlight`}>06</span>
+          <span className={`md:text-xl text-md font-medium text-${season.color}-highlight`}>06</span>
         </div>
         <h1 className='flex flex-col justify-center items-center'>
           <p className={`dynamic-title text-${season.color}-highlight ${TheSeasons.className}`}>{season.title}</p>
@@ -211,7 +211,7 @@ export default function Component() {
             {season.subtitle ? season.subtitle : ''}
           </p>
         </h1>
-        <p className={`text-sm md:text-base p-2 lg:p-0 w-[95%] sm:w-4/5 md:w-2/3 lg:w-3/4 text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, não há asas que resistam e as folhas cairão — mesmo que ainda haja perfume de flor. O frio virá em complemento ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real, está certo e há amor.</p>
+        <p className={`text-sm md:text-base pt-8 p-2 lg:pt-12 w-[95%] sm:w-4/5 md:w-2/3 lg:w-4/5 text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, não há asas que resistam e as folhas cairão — mesmo que ainda haja perfume de flor. O frio virá em complemento ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real, está certo e há amor.</p>
       </main>
 
       <section
