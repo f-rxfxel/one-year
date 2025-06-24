@@ -177,6 +177,11 @@ export default function Component() {
   />
 );
 
+  const openSeasonImage = () => {
+    const key = season.key;
+    const imageUrl = `/images/${key}.png`;
+    window.open(imageUrl, '_blank');
+  };
 
   return (
     <div
@@ -201,7 +206,9 @@ export default function Component() {
         <div className="flex items-center md:gap-18 gap-16 pb-16 md:pb-20">
           <span className={`md:text-xl text-md font-medium text-${season.color}-highlight`}>09</span>
           <div className={`transition-colors duration-500 text-${season.color}-highlight relative`}>
-            {season.icon(`currentColor`)}
+            <span onClick={openSeasonImage} style={{ cursor: 'pointer' }} title={`Clique aqui!`}>
+              {season.icon(`currentColor`)}
+            </span>
           </div>
           <span className={`md:text-xl text-md font-medium text-${season.color}-highlight`}>06</span>
         </div>
