@@ -218,7 +218,7 @@ export default function Component() {
             {season.subtitle ? season.subtitle : ''}
           </p>
         </h1>
-        <p className={`text-sm md:text-base pt-8 p-2 lg:pt-12 w-[95%] sm:w-4/5 md:w-2/3 lg:w-4/5 text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, não há asas que resistam e as folhas cairão — mesmo que ainda haja perfume de flor. O frio virá em complemento ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor, pois tudo é real, está certo e há amor.</p>
+        <p className={`text-sm md:text-base pt-8 p-2 lg:pt-12 w-[95%] sm:w-4/5 md:w-2/3 lg:w-4/5 text-justify border-${season.color}-highlight text-${season.color}-highlight`}>Em raios solares sem aviso, não há asas que resistam e as folhas cairão — mesmo que ainda haja perfume de flor. O frio virá em complemento ao calor, e, assim como o rio que se congela e depois volta a correr com frescor, a pétala caída retornará à terra para dar força a outra cor. Por isso, eu morreria sem temor e com amor, pois tudo é real, e está certo.</p>
       </main>
 
       <section

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from "next/font/google";
+import DynamicTitle from "./components/DynamicTitle";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -10,8 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "faz 1 ano",
-  description: "Te amo há (mais de) 1 ano",
+  description: "Te namoro há (mais de) 1 ano",
 };
 
 export default function RootLayout({
@@ -21,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={`antialiased h-screen overflow-hidden ${poppins.className}`}>
-      <body>{children}</body>
+      <body>
+        <DynamicTitle />
+        {children}
+      </body>
     </html>
   );
 }
